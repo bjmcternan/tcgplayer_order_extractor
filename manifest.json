@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "tcgplayer_extractor",
+  "version": "1.0",
+  "description": "Extracts TCGPlayer orders",
+  "permissions": ["activeTab"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://store.tcgplayer.com/myaccount/orderhistory*"],
+      "js": ["tcgplayer_extractor.js"]
+    }
+  ]
+  // "web_accessible_resources": [
+  //   "popup.html",
+  //   "popup.js"
+  // ]
+}
