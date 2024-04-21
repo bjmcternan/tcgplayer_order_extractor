@@ -1,19 +1,8 @@
 document.body.style.border = "5px solid red";
 
-
 // Select the first div with class 'container'
 var orderTables = document.querySelectorAll('.orderTable'); // or you can use .container:nth-child(1)
-
 var newTable = copyTableRowsToNewTable(orderTables);
-
-console.log(newTable);
-
-// Send collected data to background script
-if (newTable) {
-  // Send the merged table to the background script
-  browser.runtime.sendMessage({ action: "sendTable", table: newTable.outerHTML }); 
-}
-
 
 // Function to collect table cells
 function copyTableRowsToNewTable(orderTables) {
@@ -28,7 +17,6 @@ function copyTableRowsToNewTable(orderTables) {
     for (let i = 1; i < rows.length; i++) {
       //Get all cells
       var cells = rows[i].getElementsByTagName("td");
-      console.log(cells[0].innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''))
       // Insert a row at the end of table
       var newRow = mergedTableBody.insertRow();
 
@@ -39,15 +27,21 @@ function copyTableRowsToNewTable(orderTables) {
       var cellQuantity = newRow.insertCell();
       
       // Copy content
-      cellItems.textContent = cells[0].textContent;
-      cellDetail.textContent = cells[1].textContent;
-      cellPrice.textContent = cells[2].textContent;
-      cellQuantity.textContent = cells[3].textContent;
+      cellItems.innerHTML = cells[0].innerHTML;//.replace(/\s/g, '');
+      cellDetail.innerHTML = cells[1].innerHTML;//.replace(/\s/g, '');
+      cellPrice.innerHTML = cells[2].innerHTML;//.replace(/\s/g, '');
+      cellQuantity.innerHTML = cells[3].innerHTML;//.replace(/\s/g, '');
 
       // Clone the row and append to the merged table
       mergedTableBody.appendChild(newRow);
     }
   });
 
+  return newTable;
+}
+
+
+function GetData()
+{
   return newTable;
 }

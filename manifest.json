@@ -5,7 +5,7 @@
   "description": "Extracts TCGPlayer orders",
   "permissions": ["activeTab", "downloads"],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background.mjs"],
     "persistent": false
   },
   "icons": {
@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["*://store.tcgplayer.com/myaccount/orderhistory*"],
-      "js": ["tcgplayer_extractor.js"]
+      "js": ["tcgplayer_extractor.mjs"]
     }
   ]
 }
