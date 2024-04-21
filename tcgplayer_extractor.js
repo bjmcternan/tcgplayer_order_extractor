@@ -6,6 +6,8 @@ var orderTables = document.querySelectorAll('.orderTable'); // or you can use .c
 
 var newTable = copyTableRowsToNewTable(orderTables);
 
+console.log(newTable);
+
 // Send collected data to background script
 if (newTable) {
   // Send the merged table to the background script
@@ -26,6 +28,7 @@ function copyTableRowsToNewTable(orderTables) {
     for (let i = 1; i < rows.length; i++) {
       //Get all cells
       var cells = rows[i].getElementsByTagName("td");
+      console.log(cells[0].innerHTML.trim().replace(/^(&nbsp;|\s)*/, ''))
       // Insert a row at the end of table
       var newRow = mergedTableBody.insertRow();
 

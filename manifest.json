@@ -3,7 +3,7 @@
   "name": "tcgplayer_extractor",
   "version": "1.0",
   "description": "Extracts TCGPlayer orders",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "downloads"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -17,8 +17,4 @@
       "js": ["tcgplayer_extractor.js"]
     }
   ]
-  // "web_accessible_resources": [
-  //   "popup.html",
-  //   "popup.js"
-  // ]
 }
